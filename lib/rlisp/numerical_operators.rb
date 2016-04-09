@@ -10,7 +10,7 @@ module NumericalOperators
   end
 
   def multiply
-    lambda { |*args| args.inject(&:-) }
+    lambda { |*args| args.inject(&:*) }
   end
 
   def divide
