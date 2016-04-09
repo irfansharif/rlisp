@@ -5,7 +5,7 @@ require 'rlisp/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rlisp"
-  spec.version       = Rlisp::VERSION
+  spec.version       = RLisp::VERSION
   spec.authors       = ["Irfan Sharif"]
   spec.email         = ["irfan.sharif@shopify.com"]
 

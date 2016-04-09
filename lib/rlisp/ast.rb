@@ -1,12 +1,3 @@
-class ASTNode
-  attr_accessor :type, :value
-
-  def initialize(value)
-    self.value = value
-    self.type = value.class
-  end
-end
-
 module AST
   extend self
 
@@ -23,7 +14,15 @@ module AST
       tokens.shift
       return abstract_syntax_tree
     else
-      return ASTNode.new tokens.shift
+      return generate_node(tokens.shift)
+    end
+  end
+
+  def generate_node(token)
+    if token =~ /\d/
+      return token.to_f 
+    else
+      return token.to_sym
     end
   end
 end

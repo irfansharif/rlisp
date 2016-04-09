@@ -1,3 +1,6 @@
+require_relative 'numerical_operators'
+require_relative 'scheme_keywords'
+
 module Environment
   extend self
 
@@ -8,21 +11,24 @@ module Environment
   end
 
   def numerical_operators
-    (Fixnum.instance_methods - Object.instance_methods).map do |method|
-      [method, [Fixnum.instance_method(method), Float.instance_method(method)]]
+    NumericalOperators.singleton_methods.map do |method|
+      [method, NumericalOperators.send(method)]
     end.to_h
   end
 
-  def scheme_operators
-    {
-      
-    } 
+  def scheme_keywords
+    SchemeKeywords.singleton_methods.map do |method|
+      [method, SchemeKeywords.send(method)]
+    end.to_h
   end
 
   def standard_environment
-    env = {}
+    @environment ||= begin
+      env = {}
 
-    env.update(math_library_functions)
-    env.update(numerical_operators)
+      env.update(math_library_functions)
+      env.update(numerical_operators)
+      env.update(scheme_keywords)
+    end
   end
 end
