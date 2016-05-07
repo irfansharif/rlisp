@@ -45,4 +45,10 @@ module NumericalOperators
   alias_method :+, :add
   alias_method :-, :subtract
   alias_method :/, :divide
+  alias_method :>, :greater_than
+  alias_method :<, :less_than
+  alias_method :>=, :greater_than_or_equal
+  alias_method :<=, :less_than_or_equal
+  alias_method :==, :equals
+  alias_method :!=, :not_equals
 end

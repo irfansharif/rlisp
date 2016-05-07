@@ -18,6 +18,7 @@ module Eval
       _, key, value = expression
       key = evaluate(key, environment)
       environment[key.to_sym] = evaluate(value, environment)
+      nil
     else
       procedure = evaluate(expression.first, environment)
       *parameters = expression[1..-1].map do |exp|

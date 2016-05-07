@@ -23,10 +23,12 @@ module Environment
   end
 
   def standard_environment
-    env = {}
+    @environment ||= begin
+      env = {}
 
-    env.update(math_library_functions)
-    env.update(numerical_operators)
-    env.update(scheme_keywords)
+      env.update(math_library_functions)
+      env.update(numerical_operators)
+      env.update(scheme_keywords)
+    end
   end
 end

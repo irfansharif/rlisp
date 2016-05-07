@@ -20,6 +20,22 @@ module RLisp
   end
 
   def compile(program)
-    evaluate(parse(tokenize(program)))
+    tokens = tokenize(program)
+    ast = parse(tokens)
+    evaluate(ast)
+  end
+
+  def scheme_str(expression)
+    return expression unless expression.is_a? Array
+    "(#{expression.map { |val| scheme_str(val) }.join (' ') })"
+  end
+
+  def repl
+    prompt = 'rlisp: '
+    while true do
+      print(prompt)
+      val = compile gets.chomp
+      puts scheme_str(val) unless val.nil? or val.to_s.empty?
+    end
   end
 end
