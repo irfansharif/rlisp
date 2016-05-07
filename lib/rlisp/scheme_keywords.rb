@@ -40,4 +40,12 @@ module SchemeKeywords
   def number?
     lambda { |arg| arg.instance_of?(Fixnum) || arg.instance_of?(Float) }
   end
+
+  def begin
+    lambda { |*args| args[-1] }
+  end
+
+  def pi
+    Math::PI
+  end
 end

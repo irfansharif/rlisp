@@ -40,4 +40,9 @@ module NumericalOperators
   def not_equals
     lambda { |*args| args.inject(&:!=) }
   end
+
+  alias_method :*, :multiply
+  alias_method :+, :add
+  alias_method :-, :subtract
+  alias_method :/, :divide
 end
